@@ -6,6 +6,15 @@ public class Pessoa {
   private double altura;
   private double peso;
 
+  public Pessoa() {
+  }
+
+  public Pessoa(String nome, double altura, double peso) {
+    this.nome = nome;
+    this.altura = altura;
+    this.peso = peso;
+  }
+
   public String getNome() {
     return nome;
   }
