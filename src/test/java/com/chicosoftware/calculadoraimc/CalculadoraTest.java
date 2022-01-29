@@ -33,18 +33,16 @@ public class CalculadoraTest {
     public void calcular_qual_mais_saudavel() {
         Calculadora c = new Calculadora();
         List<Pessoa> pessoas = new ArrayList<>();
-
         Pessoa p0 = new Pessoa("Fino", 10, 1);
         Pessoa p1 = new Pessoa("Zeca", 1.90, 45);
         Pessoa p2 = new Pessoa("Francisco", 1.70, 66);
         Pessoa p3 = new Pessoa("Maicon", 2.00, 88);
         Pessoa p4 = new Pessoa("Jefferson", 1.60, 77);
-
         pessoas.add(p0);
-        pessoas.add(p3);
-        pessoas.add(p4);
         pessoas.add(p1);
         pessoas.add(p2);
+        pessoas.add(p3);
+        pessoas.add(p4);
         String pessoaMaisSaudavel = c.quemTemOMenorIMC(pessoas);
         Assert.assertEquals("Fino",pessoaMaisSaudavel);
     }

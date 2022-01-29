@@ -12,26 +12,16 @@ public class Calculadora {
 
     public String quemTemOMenorIMC(List<Pessoa> pessoas) {
         List<Double> imc = new ArrayList<>();
-        /**
+        /**;
          * Carregar a lista IMC com o imc de todos
          * da lista pessoa
          */
-        for (int i = 0; i < pessoas.size(); i++) {
-            double calculoIMC = calcularIMC(pessoas.get(i).getAltura(), pessoas.get(i).getPeso());
+        Pessoa p = new Pessoa();
+        for (Pessoa pessoa : pessoas) {
+            double calculoIMC = calcularIMC(pessoa.getAltura(), pessoa.getPeso());
             imc.add(calculoIMC);
         }
-        double min = imc.get(0);
-        Pessoa p = new Pessoa();
-        /**
-         * Compara qual o menor valor de imc, e atribui esse valor a variavel min;
-         * Atribui o index do valor min do imc ao nome do objeto p
-         * */
-        for (int i = 1; i < imc.size(); i++) {
-            if (imc.get(i) < min) {
-                min = imc.get(i);
-                p.setNome(pessoas.get(i).getNome());
-            }
-        }
+        p.setNome(pessoas.get(imc.indexOf(Collections.min(imc))).getNome());
         return p.getNome();
     }
 }
