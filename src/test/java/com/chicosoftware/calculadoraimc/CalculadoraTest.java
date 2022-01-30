@@ -9,7 +9,6 @@ import java.util.List;
 public class CalculadoraTest {
 
     static final double TOLERANCE = 0.001;
-    private Object Pessoa;
 
     @Test
     public void calcular_imc_teste() {

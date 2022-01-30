@@ -24,4 +24,17 @@ public class Calculadora {
         p.setNome(pessoas.get(imc.indexOf(Collections.min(imc))).getNome());
         return p.getNome();
     }
+
+    public String exemplo(List<Pessoa> pessoas) {
+        Pessoa p = null;
+        double min = 0;
+        for (Pessoa pessoa : pessoas) {
+            double calculoIMC = calcularIMC(pessoa.getAltura(), pessoa.getPeso());
+            if (p == null || calculoIMC < min) {
+                min = calculoIMC;
+                p = pessoa;
+            }
+        }
+        return p.getNome();
+    }
 }
