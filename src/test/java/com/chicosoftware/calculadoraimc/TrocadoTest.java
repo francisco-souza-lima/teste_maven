@@ -15,20 +15,14 @@ public class TrocadoTest {
     // Trocado para 5 reais e 50 centavos.
     Map<String, Integer> trocado = t.obterTroco(5.50D);
 
-    Assert.assertFalse(trocado == null);
-
+    Assert.assertNotNull(trocado);
     Assert.assertFalse(trocado.isEmpty());
 
     Integer qtdMoedas1Real = trocado.get(Trocado.UM_REAL);
-
     Integer qtdMoedas50Centavos = trocado.get(Trocado.CINQUENTA_CENTAVOS);
 
     Assert.assertEquals(5, qtdMoedas1Real.intValue());
-
     Assert.assertEquals(1, qtdMoedas50Centavos.intValue());
-
-
-
   }
 
   @Test
