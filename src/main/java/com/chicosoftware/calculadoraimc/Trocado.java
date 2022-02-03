@@ -1,7 +1,9 @@
 package com.chicosoftware.calculadoraimc;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Trocado {
@@ -40,113 +42,49 @@ public class Trocado {
 
         //TODO: Implementar contador logica aqui
 
+        Locale.setDefault(Locale.US);
         Map<String, Integer> troco = new HashMap();
-
-//    troco.put(UM_REAL, 5);
-//    troco.put(CINQUENTA_CENTAVOS, 1);
-//    troco.put(VINTE_CINCO_CENTAVOS, 1);
-//    troco.put(DEZ_CENTAVOS, 2);
-//    troco.put(UM_CENTAVO, 2);
-
-//        troco.put(UM_REAL, 0);
-//        troco.put(CINQUENTA_CENTAVOS, 0);
-//        troco.put(VINTE_CINCO_CENTAVOS, 0);
-//        troco.put(DEZ_CENTAVOS, 0);
-//        troco.put(CINCO_CENTAVOS, 0);
-//        troco.put(UM_CENTAVO, 0);
+        DecimalFormat df = new DecimalFormat("0.00");
 
         int valorTrocarInt = (int) valorTrocar;
 
-        troco.put(UM_REAL, valorTrocarInt);
+        if (valorTrocarInt != 0) {
+            troco.put(UM_REAL, valorTrocarInt);
+        }
 
         double valorTrocarDouble = valorTrocar - valorTrocarInt;
 
-        double ct;
-        int i = 0;
-
-        while (valorTrocarDouble != 0) {
-            ct = valorTrocarDouble / 0.5;
-            if (ct != 0) {
-                valorTrocarDouble = valorTrocarDouble % 0.5;
-                troco.put(CINQUENTA_CENTAVOS, i++);
-            }
+        int ct = 1;
+        while (valorTrocarDouble >= 0.50) {
+            valorTrocarDouble = Double.parseDouble(df.format(valorTrocarDouble - 0.50));
+            troco.put(CINQUENTA_CENTAVOS, ct++);
         }
 
+        ct = 1;
+        while (valorTrocarDouble >= 0.25) {
+            valorTrocarDouble = Double.parseDouble(df.format(valorTrocarDouble - 0.25));
+            troco.put(VINTE_CINCO_CENTAVOS, ct++);
+        }
 
-//        double i;
-//        int contador = 1;
-//
-//        for (i = valorTrocar; i > qtdMoedas1Real; qtdMoedas1Real++) {
-//            valorTrocar -= 1;
-//            troco.put(UM_REAL, contador++);
-//        }
-//        contador = 0;
-//
-//        for (i = valorTrocar; i > qtdMoedas50Centavos; qtdMoedas50Centavos++) {
-//            valorTrocar -= 0.50;
-//            troco.put(CINQUENTA_CENTAVOS, contador++);
-//        }
-////
-//        for (double i = valorTrocar; i >= qtdMoedas1Centavo; qtdMoedas1Centavo++) {
-//            troco.put(UM_CENTAVO, 1);
-//            valorTrocar -= qtdMoedas1Centavo;
-//        }
-//        if (troco.get(UM_CENTAVO) > 0) {
-//            troco.put(UM_CENTAVO, qtdMoedas1Centavo);
-//        }
+        ct = 1;
+        while (valorTrocarDouble >= 0.10) {
+            valorTrocarDouble = Double.parseDouble(df.format(valorTrocarDouble - 0.10));
+            troco.put(DEZ_CENTAVOS, ct++);
+        }
 
+        ct = 1;
+        while (valorTrocarDouble >= 0.05) {
+            valorTrocarDouble = Double.parseDouble(df.format(valorTrocarDouble - 0.05));
+            troco.put(CINCO_CENTAVOS, ct++);
+        }
 
-//
-//        while (valorTrocar >= qtdMoedas1Real) {
-//            troco.put(UM_REAL, 1);
-//            valorTrocar -= qtdMoedas1Real;
-//        }
-//        if (troco.get(UM_REAL) > 0) {
-//            troco.put(UM_REAL, qtdMoedas1Centavo);
-//        }
-//
-//        while (valorTrocar >= qtdMoedas50Centavos) {
-//            troco.put(CINQUENTA_CENTAVOS, 1);
-//            valorTrocar -= qtdMoedas50Centavos;
-//        }
-//        if (troco.get(CINQUENTA_CENTAVOS) > 0) {
-//            troco.put(CINQUENTA_CENTAVOS, qtdMoedas50Centavos);
-//        }
-//
-//        while (valorTrocar >= qtdMoedas25Centavos) {
-//            troco.put(VINTE_CINCO_CENTAVOS, 1);
-//            valorTrocar -= qtdMoedas25Centavos;
-//        }
-//        if (troco.get(VINTE_CINCO_CENTAVOS) > 0) {
-//            troco.put(VINTE_CINCO_CENTAVOS, qtdMoedas25Centavos);
-//        }
-//
-//        while (valorTrocar >= qtdMoedas10Centavos) {
-//            troco.put(DEZ_CENTAVOS, 1);
-//            valorTrocar -= qtdMoedas10Centavos;
-//        }
-//        if (troco.get(DEZ_CENTAVOS) > 0) {
-//            troco.put(DEZ_CENTAVOS, qtdMoedas10Centavos);
-//        }
-//
-//        while (valorTrocar >= qtdMoedas5Centavos) {
-//            troco.put(CINCO_CENTAVOS, 1);
-//            valorTrocar -= qtdMoedas5Centavos;
-//        }
-//        if (troco.get(CINCO_CENTAVOS) > 0) {
-//            troco.put(CINCO_CENTAVOS, qtdMoedas5Centavos);
-//        }
-//
-//        while (valorTrocar >= qtdMoedas1Centavo) {
-//            troco.put(UM_CENTAVO, 1);
-//            valorTrocar -= qtdMoedas1Centavo;
-//        }
-//        if (troco.get(UM_CENTAVO) > 0) {
-//            troco.put(UM_CENTAVO, qtdMoedas1Centavo);
-//        }
+        ct = 1;
+        while (valorTrocarDouble >= 0.01) {
+            valorTrocarDouble = Double.parseDouble(df.format(valorTrocarDouble - 0.01));
+            troco.put(UM_CENTAVO, ct++);
+        }
 
         return troco;
     }
-
 
 }
