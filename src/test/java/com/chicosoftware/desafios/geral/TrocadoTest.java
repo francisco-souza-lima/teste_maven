@@ -1,5 +1,6 @@
-package com.chicosoftware.calculadoraimc;
+package com.chicosoftware.desafios.geral;
 
+import com.chicosoftware.desafios.geral.Trocado;
 import java.util.Map;
 
 import org.junit.Assert;

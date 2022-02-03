@@ -1,5 +1,7 @@
-package com.chicosoftware.calculadoraimc;
+package com.chicosoftware.desafios.geral;
 
+import com.chicosoftware.desafios.geral.Calculadora;
+import com.chicosoftware.desafios.geral.Pessoa;
 import org.junit.Assert;
 import org.junit.Test;
 

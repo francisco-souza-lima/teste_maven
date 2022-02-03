@@ -1,5 +1,6 @@
-package com.chicosoftware.calculadoraimc;
+package com.chicosoftware.desafios.geral;
 
+import com.chicosoftware.desafios.geral.Palavra;
 import org.junit.Assert;
 import org.junit.Test;
 

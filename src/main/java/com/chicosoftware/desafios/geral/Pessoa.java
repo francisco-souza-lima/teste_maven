@@ -1,4 +1,4 @@
-package com.chicosoftware.calculadoraimc;
+package com.chicosoftware.desafios.geral;
 
 public class Pessoa {
 
