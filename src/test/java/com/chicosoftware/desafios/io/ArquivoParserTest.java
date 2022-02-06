@@ -1,5 +1,6 @@
 package com.chicosoftware.desafios.io;
 
+import java.io.IOException;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,14 +8,13 @@ import org.junit.Test;
 public class ArquivoParserTest {
 
   @Test
-  public void obter_frases_test() {
+  public void obter_frases_test() throws IOException {
 
     ArquivoParser arquivoParser = new ArquivoParser();
 
     List<String> valoresEncontrados = arquivoParser.obterFrases(
-            "C:\\users\\chico\\poemaTosco.txt",
-        "azul");
-
+            "C:\\Users\\Mateus\\poemaTosco.txt",
+            "azul");
 
     Assert.assertNotNull(valoresEncontrados);
 
